@@ -1,9 +1,14 @@
 import click
 
-from .data.entrypoints import data
-from .viz.plot_data import plot
-from .mod.modurators import mod
-from .opt.optimize import opt
+from .config import config
+
+u"""
+mathoptpy config datagen linear -a 4.0 -b 5.0 -s -10. -e 10 -st 0.1
+mathoptpy config noise norm --std 0 0.1
+mathoptpy config opt model linear -a 5.0 -b 4.0
+mathoptpy config opt updater levenberg_marquardt --weight 0.0001
+mathoptpy optimize --tolerance 0.00001
+"""
 
 
 @click.group()
@@ -12,8 +17,5 @@ def mathoptpy():
 
 
 def main():
-    mathoptpy.add_command(data)
-    mathoptpy.add_command(mod)
-    mathoptpy.add_command(plot)
-    mathoptpy.add_command(opt)
+    mathoptpy.add_command(config.get_cli())
     mathoptpy()
