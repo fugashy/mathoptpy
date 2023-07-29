@@ -1,6 +1,7 @@
 import click
 
 from .config import config
+from .viz import viz
 
 u"""
 mathoptpy config datagen linear -a 4.0 -b 5.0 -s -10. -e 10 -st 0.1
@@ -18,4 +19,5 @@ def mathoptpy():
 
 def main():
     mathoptpy.add_command(config.get_cli())
+    mathoptpy.add_command(viz.viz)
     mathoptpy()
